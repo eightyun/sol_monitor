@@ -8,3 +8,6 @@ build/
 # 忽略临时文件
 temp/
 *.tmp
+
+# 忽略vsc
+*.vscode
