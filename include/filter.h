@@ -5,7 +5,7 @@
 #include <cstdint>
 #include <nlohmann/json.hpp>
 
-std::string FilterInstructions(const std::string & blockdata, const std::string & target_programid);
-void ProcessBlocks(uint64_t start_slot, int end_slot, const std::string & target_programid);
+void FilterInstructions(const uint64_t & slot , const std::string & blockdata);
+void ProcessBlocks(uint64_t start_slot , uint64_t end_slot);
 
 #endif
