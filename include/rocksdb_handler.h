@@ -6,8 +6,8 @@
 #include <nlohmann/json.hpp>
 
 void InitRocksDB();
-void StoreBlockData(uint64_t slot , const std::string & blockdata) ;
-nlohmann::json GetStoredBlockData(uint64_t slot) ;
+void StoreBlockData(const std::string & key , const std::string & blockdata) ;
+nlohmann::json GetStoredBlockData(const uint64_t & slot) ;
 void CloseRocksDB() ;
 
 #endif

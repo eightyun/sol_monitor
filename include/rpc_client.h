@@ -4,6 +4,6 @@
 #include <string>
 #include <cstdint> 
 
-std::string GetBlockData(uint64_t slot);
+std::string GetBlockData(const uint64_t & slot);
 
 #endif
