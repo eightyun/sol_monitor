@@ -5,6 +5,10 @@
 
 int main()
 {
+    auto start_time = std::chrono::high_resolution_clock::now(); 
+
+// ----------------------------------------------------------------
+
     InitRocksDB() ;
 
     uint64_t start_slot ;
@@ -13,12 +17,15 @@ int main()
     uint64_t end_solt ;
     std::cin >> end_solt ;
 
-    std::string target_programid ;
-    std ::cin >> target_programid ;
-
-    ProcessBlocks(start_slot , end_solt , target_programid) ;
+    ProcessBlocks(start_slot , end_solt) ;
 
     CloseRocksDB() ;
+
+// ----------------------------------------------------------------
+
+    auto end_time = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed = end_time - start_time;
+    std::cout << "Program executed in " << elapsed.count() << " seconds." << std::endl;
 
     return 0 ; 
 }
