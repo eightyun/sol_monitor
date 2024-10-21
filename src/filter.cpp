@@ -74,7 +74,7 @@ void ProcessBlocks(uint64_t start_slot, uint64_t end_slot)
         cv.wait(lock, [] { return active_threads < max_concurrent_threads; });
         active_threads++;
         lock.unlock();
-
+        // 闭包捕获变量
         futures.emplace_back(std::async(std::launch::async, [slot]()
         {
             int wait_time = 100; 
@@ -98,11 +98,12 @@ void ProcessBlocks(uint64_t start_slot, uint64_t end_slot)
             try
             {
                 FilterInstructions(slot, blockdata);
+                // std::this_thread::sleep_for(std::chrono::milliseconds(100));
             }
-            catch (const std::exception& e)
+            catch (const std::exception & e)
             {
                 std::lock_guard<std::mutex> lock(mtx);
-                std::cerr << "Exception occurred while filtering instructions for slot: " << slot << " - " << e.what() << std::endl;
+                std::cerr << "Exception occurred while FilterInstructions for slot: " << slot << " - " << e.what() << std::endl;
             }
 
             {
